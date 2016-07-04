@@ -1,0 +1,33 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ * 
+ */
+
+class index_controlador extends controller {
+
+    function __construct() {
+    //llamamos al metodo constructor de la clase padre
+        parent::__construct();
+    }
+
+    function index() {
+        //enviamos el parametro a la vista index.phtml
+      
+        //llamamos al metodo renderizar para que muestre la vista enviada
+        //por parametro
+        if(session::get('autenticado')){
+             $this->_vista->titulo = 'Multiservicios Frank';
+            $this->_vista->renderizar('index');   
+        }
+        else{
+            header('location:' . BASE_URL );
+            exit;
+        }
+    }
+
+}
+
+?>
